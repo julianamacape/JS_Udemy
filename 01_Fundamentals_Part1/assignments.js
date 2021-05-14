@@ -2,7 +2,7 @@
 
 const country = "Brazil";
 const continent = "South America";
-let population = 200000000;
+const population = 200000000;
 
 console.log(country);
 console.log(continent);
@@ -30,8 +30,13 @@ const finlandPop = 6000000
 console.log(population > finlandPop);
 
 //4.
-let averageCountryPop = 33000000;
+const averageCountryPop = 33000000;
 console.log(population < averageCountryPop);
 
 //5.
-let description = 'Brazil is is South America, and its 200 million people speak Portuguese.'
+const description = 'Brazil is is South America, and its 200 million people speak Portuguese.'
+console.log(description);
+
+//6.
+const description2 = `${country} is in ${continent} and its ${population} million people speak ${language}.`
+console.log(description2);
