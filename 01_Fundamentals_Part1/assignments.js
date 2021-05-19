@@ -74,3 +74,29 @@ if (language === "english" && population < 50 && isIsland === false) {
 } else {
     console.log(`I'm sorry, Sarah, but ${country} isn't the right place for you.`)
 }
+
+// LECTURE: The switch Statement
+switch (language) {
+    case 'mandarin':
+    case 'chinese':
+        console.log('MOST number of native speakers!');
+        break;
+    case 'spanish':
+        console.log('2nd place in number of native speakers');
+        break;
+    case 'english':
+        console.log('3rd place in number of native speakers');
+        break;
+    case 'hindi':
+        console.log('4th place in number of native speakers');
+        break;
+    case 'arabic':
+        console.log('5th place in number of native speakers');
+        break;
+    default:
+        console.log('Great language too!');
+        break;
+}
+
+// LECTURE: The Conditional (Ternary) Operator
+population > 33 ? console.log(`${country}'s population is above average.`) : console.log(`${country}'s population is below average.`);
