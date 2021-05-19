@@ -1,0 +1,3 @@
+const bill;
+const tip;
+
