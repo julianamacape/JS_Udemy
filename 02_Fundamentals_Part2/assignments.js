@@ -50,14 +50,33 @@ const popBrazil2 = percentageOfWorld2(200);
 const popBrazilPer2 = Number(popBrazil2.toFixed(1));
 console.log(`With its 200 million people, Brazil represents ${popBrazilPer2}% of the World's population.`);
 
-const popUSA2 = percentageOfWorld1(328);
+const popUSA2 = percentageOfWorld2(328);
 const popUSAPer2 = Number(popUSA2.toFixed(1));
 console.log(`With its 328 million people, the USA represents ${popUSAPer2}% of the World's population.`);
 
-const popCanada2 = percentageOfWorld1(37);
+const popCanada2 = percentageOfWorld2(37);
 const popCanadaPer2 = Number(popCanada2.toFixed(1));
 console.log(`With its 37 million people, Canada represents ${popCanadaPer2}% of the World's population.`);
 
-const popChina2 = percentageOfWorld1(1400);
+const popChina2 = percentageOfWorld2(1400);
 const popChinaPer2 = Number(popChina2.toFixed(1));
 console.log(`With its 1.4 billion people, China represents ${popChinaPer2}% of the World's population.`);
+
+// LECTURE: Arrow Functions
+const percentageOfWorld3 = countryPopulation => (countryPopulation * 100) / 7900;
+
+const popBrazil3 = percentageOfWorld3(200);
+const popBrazilPer3 = Number(popBrazil3.toFixed(1));
+console.log(`With its 200 million people, Brazil represents ${popBrazilPer3}% of the World's population.`);
+
+const popUSA3 = percentageOfWorld3(328);
+const popUSAPer3 = Number(popUSA3.toFixed(1));
+console.log(`With its 328 million people, the USA represents ${popUSAPer3}% of the World's population.`);
+
+const popCanada3 = percentageOfWorld3(37);
+const popCanadaPer3 = Number(popCanada3.toFixed(1));
+console.log(`With its 37 million people, Canada represents ${popCanadaPer3}% of the World's population.`);
+
+const popChina3 = percentageOfWorld3(1400);
+const popChinaPer3 = Number(popChina3.toFixed(1));
+console.log(`With its 1.4 billion people, China represents ${popChinaPer3}% of the World's population.`);
