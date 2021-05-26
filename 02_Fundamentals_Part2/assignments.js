@@ -86,3 +86,23 @@ console.log(`With its 37 million people, Canada represents ${popCanadaPer3}% of 
 const popChina3 = percentageOfWorld3(1400);
 const popChinaPer3 = Number(popChina3.toFixed(1));
 console.log(`With its 1.4 billion people, China represents ${popChinaPer3}% of the World's population.`);
+
+// LECTURE: Functions Calling Other Functions
+
+/* This function has been declared in lines 22-25
+
+function percentageOfWorld1(countryPopulation) {
+    const eqPercentage = (countryPopulation * 100) / 7900;
+    return eqPercentage;
+}
+
+*/
+function describePopulation(country, population) {
+    const calcPercentage = Number(percentageOfWorld1(population).toFixed(1));
+
+    return `With its ${population} million people, ${country} represents ${calcPercentage}% of the world's population.`
+};
+
+console.log(describePopulation('Canada', 37.8));
+console.log(describePopulation('Portugal', 11));
+console.log(describePopulation('the United States', 328));
