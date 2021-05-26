@@ -24,6 +24,8 @@ function percentageOfWorld1(countryPopulation) {
     return eqPercentage;
 }
 
+console.log('Function declaration');
+
 const popBrazil = percentageOfWorld1(200);
 const popBrazilPer = Number(popBrazil.toFixed(1));
 console.log(`With its 200 million people, Brazil represents ${popBrazilPer}% of the World's population.`);
@@ -46,6 +48,8 @@ const percentageOfWorld2 = function (countryPopulation) {
     return eqPercentage;
 }
 
+console.log('Function Expression');
+
 const popBrazil2 = percentageOfWorld2(200);
 const popBrazilPer2 = Number(popBrazil2.toFixed(1));
 console.log(`With its 200 million people, Brazil represents ${popBrazilPer2}% of the World's population.`);
@@ -64,6 +68,8 @@ console.log(`With its 1.4 billion people, China represents ${popChinaPer2}% of t
 
 // LECTURE: Arrow Functions
 const percentageOfWorld3 = countryPopulation => (countryPopulation * 100) / 7900;
+
+console.log('Arrow Function');
 
 const popBrazil3 = percentageOfWorld3(200);
 const popBrazilPer3 = Number(popBrazil3.toFixed(1));
