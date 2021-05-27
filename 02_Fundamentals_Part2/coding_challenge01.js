@@ -15,12 +15,12 @@ const aveKoalas = Number(calcAverage(23, 34, 27).toFixed(1));
 
 function checkWinner(aveDolphins, aveKoalas) {
     if (aveDolphins >= aveKoalas * 2) {
-        return `Dolphins win (${aveDolphins} vs. ${aveKoalas})`;
+        console.log(`Dolphins win (${aveDolphins} vs. ${aveKoalas})`);
     } else if (aveKoalas >= aveDolphins * 2) {
-        return `Koalas win (${aveKoalas} vs. ${aveDolphins})`;
+        console.log(`Koalas win (${aveKoalas} vs. ${aveDolphins})`);
     } else {
-        return `No team wins!`
+        console.log(`No team wins!`);
     }
 }
 
-console.log(checkWinner(aveDolphins, aveKoalas));
+checkWinner(aveDolphins, aveKoalas);
