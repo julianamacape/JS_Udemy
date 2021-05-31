@@ -112,3 +112,20 @@ const allPopulations = [200, 328, 37.8, 11];
 console.log(allPopulations.length === 4);
 const allPercentages = [percentageOfWorld1(allPopulations[0]), percentageOfWorld1(allPopulations[1]), percentageOfWorld1(allPopulations[2]), percentageOfWorld1(allPopulations[3])];
 console.log(allPercentages);
+
+// LECTURE: Introduction to Arrays
+const neighbors = ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia'];
+
+neighbors.push('Utopia');
+
+neighbors.pop();
+
+
+
+if (neighbors.includes('Germany') === false) {
+    console.log('Probably not a central European country :D');
+};
+
+neighbors[neighbors.indexOf('Chile')] = 'Republic of Chile';
+
+console.log(neighbors);
