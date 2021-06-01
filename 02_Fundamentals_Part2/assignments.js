@@ -113,7 +113,7 @@ console.log(allPopulations.length === 4);
 const allPercentages = [percentageOfWorld1(allPopulations[0]), percentageOfWorld1(allPopulations[1]), percentageOfWorld1(allPopulations[2]), percentageOfWorld1(allPopulations[3])];
 console.log(allPercentages);
 
-// LECTURE: Introduction to Arrays
+// LECTURE: Basic Array Operations (Methods)
 const neighbors = ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia'];
 
 neighbors.push('Utopia');
@@ -129,3 +129,24 @@ if (neighbors.includes('Germany') === false) {
 neighbors[neighbors.indexOf('Chile')] = 'Republic of Chile';
 
 console.log(neighbors);
+
+// LECTURE: Introduction to Objects
+const myCountry = {
+    country: 'Brazil',
+    capital: 'Brasília',
+    language: 'Portuguese',
+    population: '200',
+    neighbors: ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia']
+}
+
+// LECTURE: Dot vs.Bracket Notation
+// Template: 'Finland has 6 million finnish-speaking people, 3 neighbouring countries and a capital called Helsinki.'
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+
+myCountry.population = 202;
+
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+
+myCountry['population'] = 200;
+
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
