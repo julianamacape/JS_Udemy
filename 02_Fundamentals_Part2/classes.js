@@ -12,9 +12,16 @@ console.log(calcYear(anos[2]));
 const juliana = {
     firstName: 'Juliana',
     lastName: 'Pereira',
-    age: 2021 - 1987,
+    birthYear: 1987,
+    isGay: true,
+    hasDriverLicense: true,
     job: 'programmer and web developer',
     friends: ['Lyvia', 'Maria', 'Monys'],
+
+    getSummary: function () {
+        return `${this.firstName} ${this.lastName} is a ${2021 - this.birthYear}-year-old ${this.job}, she ${this.hasDriverLicense ? "can" : "can't"} drive and she's ${this.isGay ? "gay" : "straight"}.`
+    }
+
 }
 
 // const pick = prompt('O que você gostaria de saber sobre mim? Escolha firstName, lastName, age ou job.')
@@ -29,4 +36,6 @@ if (juliana[pick]) {
 }
 */
 
-alert(`${juliana.firstName} has ${juliana.friends.length} friends and her best friend is ${juliana.friends[1]}.`);
+// alert(`${juliana.firstName} has ${juliana.friends.length} friends and her best friend is ${juliana.friends[1]}.`);
+
+console.log(juliana.getSummary());

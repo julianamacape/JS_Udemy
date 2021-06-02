@@ -131,6 +131,7 @@ neighbors[neighbors.indexOf('Chile')] = 'Republic of Chile';
 console.log(neighbors);
 
 // LECTURE: Introduction to Objects
+/*
 const myCountry = {
     country: 'Brazil',
     capital: 'Brasília',
@@ -138,9 +139,11 @@ const myCountry = {
     population: '200',
     neighbors: ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia']
 }
+*/
 
-// LECTURE: Dot vs.Bracket Notation
+// LECTURE: Dot vs. Bracket Notation
 // Template: 'Finland has 6 million finnish-speaking people, 3 neighbouring countries and a capital called Helsinki.'
+/*
 console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
 
 myCountry.population = 202;
@@ -150,3 +153,27 @@ console.log(`${myCountry.country} has ${myCountry.population} million ${myCountr
 myCountry['population'] = 200;
 
 console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbors.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+*/
+
+// LECTURE: Object Methods
+const myCountry = {
+    country: 'Brazil',
+    capital: 'Brasília',
+    language: 'Portuguese',
+    population: '200',
+    neighbors: ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia'],
+
+    describe: function () {
+        return `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbors.length} neighbouring countries and a capital called ${this.capital}.`
+    },
+
+
+    checkIsIsland: function () {
+        this.isIsland = this.neighbors.length === 0 ? true : false;
+        return this.isIsland;
+    },
+
+};
+
+console.log(myCountry.describe());
+console.log(myCountry.checkIsIsland());
