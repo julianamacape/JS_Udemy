@@ -1,6 +1,7 @@
 'use strict';
 
 // LECTURE: Functions
+/*
 function describeCountry(country, population, capitalCity) {
     return `${country} has ${population} million people and its capital city is ${capitalCity}.`
 }
@@ -13,9 +14,10 @@ console.log(usa);
 
 const canada = describeCountry('Canada', 37, 'Ottawa');
 console.log(canada);
+*/
 
 // LECTURE: Function Declarations vs. Expressions
-
+/*
 // formula: x% = (CP*100) / 7900
 
 // Function declaration
@@ -65,8 +67,10 @@ console.log(`With its 37 million people, Canada represents ${popCanadaPer2}% of 
 const popChina2 = percentageOfWorld2(1400);
 const popChinaPer2 = Number(popChina2.toFixed(1));
 console.log(`With its 1.4 billion people, China represents ${popChinaPer2}% of the World's population.`);
+*/
 
 // LECTURE: Arrow Functions
+/*
 const percentageOfWorld3 = countryPopulation => (countryPopulation * 100) / 7900;
 
 console.log('Arrow Function');
@@ -86,6 +90,7 @@ console.log(`With its 37 million people, Canada represents ${popCanadaPer3}% of 
 const popChina3 = percentageOfWorld3(1400);
 const popChinaPer3 = Number(popChina3.toFixed(1));
 console.log(`With its 1.4 billion people, China represents ${popChinaPer3}% of the World's population.`);
+*/
 
 // LECTURE: Functions Calling Other Functions
 
@@ -96,7 +101,7 @@ function percentageOfWorld1(countryPopulation) {
     return eqPercentage;
 }
 
-*/
+
 function describePopulation(country, population) {
     const calcPercentage = Number(percentageOfWorld1(population).toFixed(1));
 
@@ -106,14 +111,18 @@ function describePopulation(country, population) {
 console.log(describePopulation('Canada', 37.8));
 console.log(describePopulation('Portugal', 11));
 console.log(describePopulation('the United States', 328));
+*/
 
 // LECTURE: Introduction to Arrays
+/*
 const allPopulations = [200, 328, 37.8, 11];
 console.log(allPopulations.length === 4);
 const allPercentages = [percentageOfWorld1(allPopulations[0]), percentageOfWorld1(allPopulations[1]), percentageOfWorld1(allPopulations[2]), percentageOfWorld1(allPopulations[3])];
 console.log(allPercentages);
+*/
 
 // LECTURE: Basic Array Operations (Methods)
+/*
 const neighbors = ['Argentina', 'Venezuela', 'Chile', 'Colômbia', 'Bolivia'];
 
 neighbors.push('Utopia');
@@ -129,6 +138,7 @@ if (neighbors.includes('Germany') === false) {
 neighbors[neighbors.indexOf('Chile')] = 'Republic of Chile';
 
 console.log(neighbors);
+*/
 
 // LECTURE: Introduction to Objects
 /*
@@ -156,6 +166,7 @@ console.log(`${myCountry.country} has ${myCountry.population} million ${myCountr
 */
 
 // LECTURE: Object Methods
+/*
 const myCountry = {
     country: 'Brazil',
     capital: 'Brasília',
@@ -177,3 +188,28 @@ const myCountry = {
 
 console.log(myCountry.describe());
 console.log(myCountry.checkIsIsland());
+*/
+
+//LECTURE: Iteration: The for Loop
+/*
+for (let count = 1; count <= 50; count++) {
+    console.log(`Voter ${count} has voted.`);
+}
+*/
+
+//LECTURE: Looping Arrays, Breaking and Continuing
+
+function percentageOfWorld1(countryPopulation) {
+    const eqPercentage = (countryPopulation * 100) / 7900;
+    return eqPercentage;
+}
+
+const allPopulations = [200, 328, 37.8, 11];
+
+const allPercentages = [];
+
+for (let i = 0; i < allPopulations.length; i++) {
+    allPercentages[i] = percentageOfWorld1(allPopulations[i]);
+}
+
+console.log(allPercentages);
