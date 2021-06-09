@@ -41,3 +41,25 @@ if (juliana[pick]) {
 
 // console.log(juliana.getSummary());
 
+// Loop inside a Loop
+//5-rep series of push-ups; 5-rep series of burpees; 5-rep series of squat;
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+    if (exercise === 1) {
+        for (let pushup = 1; pushup <= 5; pushup++) {
+            console.log(`Push-up repetition ${pushup}.`);
+        }
+    } else if (exercise === 2) {
+        for (let burpee = 1; burpee <= 5; burpee++) {
+            console.log(`Burpee repetition ${burpee}.`);
+        }
+    } else if (exercise === 3) {
+        for (let squat = 1; squat <= 5; squat++) {
+            console.log(`Squat repetition ${squat}.`);
+        }
+    }
+}
+
+/*
+
+*/
