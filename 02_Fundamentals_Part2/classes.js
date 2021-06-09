@@ -8,7 +8,7 @@ console.log(calcYear(anos[2]));
 */
 
 // Bracket notation
-
+/*
 const juliana = {
     firstName: 'Juliana',
     lastName: 'Pereira',
@@ -23,6 +23,7 @@ const juliana = {
     }
 
 }
+*/
 
 // const pick = prompt('O que você gostaria de saber sobre mim? Escolha firstName, lastName, age ou job.')
 
@@ -38,4 +39,5 @@ if (juliana[pick]) {
 
 // alert(`${juliana.firstName} has ${juliana.friends.length} friends and her best friend is ${juliana.friends[1]}.`);
 
-console.log(juliana.getSummary());
+// console.log(juliana.getSummary());
+
