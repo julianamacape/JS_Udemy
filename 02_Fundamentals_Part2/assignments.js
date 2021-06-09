@@ -198,7 +198,7 @@ for (let count = 1; count <= 50; count++) {
 */
 
 //LECTURE: Looping Arrays, Breaking and Continuing
-
+/*
 function percentageOfWorld1(countryPopulation) {
     const eqPercentage = (countryPopulation * 100) / 7900;
     return eqPercentage;
@@ -213,3 +213,4 @@ for (let i = 0; i < allPopulations.length; i++) {
 }
 
 console.log(allPercentages);
+*/
