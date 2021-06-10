@@ -216,6 +216,7 @@ console.log(allPercentages);
 */
 
 //LECTURE: Looping Backwards and Loops in Loops
+/*
 const listOfNeighbours = [
     ['Canada', 'Mexico', 'Brazil', 'Venezuela'], // element 0
     ['Spain'], // element 1
@@ -230,3 +231,25 @@ for (let element = 0; element < listOfNeighbours.length; element++) {
         console.log(`Neighbour: "${listOfNeighbours[element][neighbor]}".`)
     }
 }
+*/
+
+//LECTURE: The while Loop
+/*
+function percentageOfWorld1(countryPopulation) {
+    const eqPercentage = (countryPopulation * 100) / 7900;
+    return eqPercentage;
+}
+
+const allPopulations = [200, 328, 37.8, 11];
+
+const allPercentages = [];
+
+let i = 0;
+
+while (i < allPopulations.length) {
+    allPercentages[i] = percentageOfWorld1(allPopulations[i]);
+    i++
+}
+
+console.log(allPercentages);
+*/
