@@ -12,6 +12,7 @@ document.querySelector('.check').addEventListener('click', function () {
   if (userGuess.length == 0) {
     //if (!userGuess)  significa a mesma coisa, ou seja, chega no mesmo resultado
     document.querySelector('.message').textContent = '🚫 No number!';
+    // } else if (userGuess !== secretNumber) {
   } else if (userGuess > secretNumber) {
     document.querySelector('.message').textContent = '📈 Too high. Try again.';
     curScoreNbr--;
@@ -47,10 +48,18 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = '🏆 You won the game!';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
-    curHighscore.textContent = curScore.textContent;
+    if (curScore.textContent >= curHighscore.textContent) {
+      curHighscore.textContent = curScore.textContent;
+    }
   }
 });
 
 document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.message').textContent = 'Start guessing...';
+  curScore.textContent = '20';
+  curScoreNbr = 20;
+  document.querySelector('.guess').value = '';
 });
