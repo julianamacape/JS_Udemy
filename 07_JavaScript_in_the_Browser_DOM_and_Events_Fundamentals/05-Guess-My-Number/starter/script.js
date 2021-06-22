@@ -12,44 +12,30 @@ document.querySelector('.check').addEventListener('click', function () {
   if (userGuess.length == 0) {
     //if (!userGuess)  significa a mesma coisa, ou seja, chega no mesmo resultado
     document.querySelector('.message').textContent = '🚫 No number!';
-    // } else if (userGuess !== secretNumber) {
-  } else if (userGuess > secretNumber) {
-    document.querySelector('.message').textContent = '📈 Too high. Try again.';
-    curScoreNbr--;
-    curScore.textContent = curScoreNbr;
-    if (curScoreNbr == 0) {
-      document.querySelector('.message').textContent =
-        '😩 GAME OVER! You lose. Press AGAIN';
-      document.querySelector('body').style.backgroundColor = 'red';
-      document.querySelector('.number').textContent = secretNumber;
-    }
-    if (curScoreNbr < 0) {
-      curScore.textContent = 'X';
-      document.querySelector('.message').textContent =
-        '😩 GAME OVER! You lose. Press AGAIN';
-    }
-    if (curScoreNbr < 0) curScore.textContent = 'X';
-  } else if (userGuess < secretNumber) {
-    document.querySelector('.message').textContent = '📉 Too low. Try again.';
-    curScoreNbr--;
-    curScore.textContent = curScoreNbr;
-    if (curScoreNbr == 0) {
-      document.querySelector('.message').textContent =
-        '😩 GAME OVER! You lose. Press AGAIN';
-      document.querySelector('body').style.backgroundColor = 'red';
-      document.querySelector('.number').textContent = secretNumber;
-    }
-    if (curScoreNbr < 0) {
-      curScore.textContent = 'X';
-      document.querySelector('.message').textContent =
-        '😩 GAME OVER! You lose. Press AGAIN';
-    }
   } else if (userGuess == secretNumber) {
     document.querySelector('.message').textContent = '🏆 You won the game!';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     if (curScore.textContent >= curHighscore.textContent) {
       curHighscore.textContent = curScore.textContent;
+    }
+  } else if (userGuess !== secretNumber) {
+    userGuess > secretNumber
+      ? (document.querySelector('.message').textContent =
+          '📈 Too high. Try again.')
+      : (document.querySelector('.message').textContent =
+          '📉 Too low. Try again.');
+    curScoreNbr--;
+    curScore.textContent = curScoreNbr;
+    if (curScoreNbr == 0) {
+      document.querySelector('.message').textContent =
+        '😩 GAME OVER! You lose. Press AGAIN';
+      document.querySelector('body').style.backgroundColor = 'red';
+      document.querySelector('.number').textContent = secretNumber;
+    } else if (curScoreNbr < 0) {
+      curScore.textContent = 'X';
+      document.querySelector('.message').textContent =
+        '😩 GAME OVER! You lose. Press AGAIN';
     }
   }
 });
