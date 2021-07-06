@@ -10,6 +10,7 @@ document.querySelector('#name--1').textContent = playerTwo;
 */
 
 ////// 2) using a function
+/*REMOVE THIS LINE
 let listPlayers = [];
 
 const playersNames = function (nbrPlayers) {
@@ -32,19 +33,24 @@ const numberPlayers = function () {
 
 numberPlayers();
 */
-
+/*REMOVE THIS LINE
 let playerName = document.querySelectorAll('.name');
 
 for (let i = 0; i < listPlayers.length; i++) {
   playerName[i].textContent = listPlayers[i];
 }
 
+REMOVE THIS LINE AND BELOW
+*/
+
 //Selecting elements
+const player0El = document.querySelector('.player--0');
+const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
 const current0El = document.querySelector('#current--0');
 const score1El = document.querySelector('#score--1');
 const current1El = document.querySelector('#current--1');
-const currentScoreBoth = document.querySelector('.current-score');
+let currentScoreBoth = document.querySelectorAll('.current-score');
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
@@ -58,6 +64,25 @@ diceEl.classList.add('hidden');
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+
+//Function to switch players
+const playerSwitch = function () {
+  //sugestão do prof de como zerar os scores qd muda o player ⬇️
+  //document.getElementById(`current--${activePlayer}`).textContent = 0;
+
+  //switch to the other player
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  //In other words: is the activePlayer "0"? Yes? So Switch to "1". No? So switch do "0"
+  currentScore = 0;
+  //Toggling the class .active--player ⬇️
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+
+  // minha sugestão de como zerar os scores qd muda o player ⬇️
+  for (let i = 0; i < currentScoreBoth.length; i++) {
+    currentScoreBoth[i].textContent = 0;
+  }
+};
 
 //Rolling dice functionality
 btnRoll.addEventListener('click', function () {
@@ -73,10 +98,25 @@ btnRoll.addEventListener('click', function () {
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
   } else {
-    //switch to the other player
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    //In other words: is the activePlayer "0"? Yes? So Switch to "1". No? So switch do "0"
-    currentScore = 0;
-    currentScoreBoth.textContent = 0;
+    playerSwitch();
+  }
+});
+
+//Holding score functionality
+btnHold.addEventListener('click', function () {
+  // 1. add current score to the active player's global score
+  scores[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+  // 2. check if the active player's score is >= 100
+  if (scores[activePlayer] < 100) {
+    playerSwitch();
+  } else {
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--active');
   }
 });
