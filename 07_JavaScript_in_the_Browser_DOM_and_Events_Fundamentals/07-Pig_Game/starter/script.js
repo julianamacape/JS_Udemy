@@ -10,7 +10,7 @@ document.querySelector('#name--1').textContent = playerTwo;
 */
 
 ////// 2) using a function
-/*REMOVE THIS LINE
+
 let listPlayers = [];
 
 const playersNames = function (nbrPlayers) {
@@ -33,15 +33,12 @@ const numberPlayers = function () {
 
 numberPlayers();
 */
-/*REMOVE THIS LINE
+
 let playerName = document.querySelectorAll('.name');
 
 for (let i = 0; i < listPlayers.length; i++) {
   playerName[i].textContent = listPlayers[i];
 }
-
-REMOVE THIS LINE AND BELOW
-*/
 
 //Selecting elements
 const player0El = document.querySelector('.player--0');
@@ -57,13 +54,32 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
 //Initial conditions
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add('hidden');
+let currentScore;
+let activePlayer;
+let playing;
+let scores;
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
+const gameStart = function () {
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  diceEl.classList.add('hidden');
+
+  for (let i = 0; i < currentScoreBoth.length; i++) {
+    currentScoreBoth[i].textContent = 0;
+  }
+
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  document.querySelector(`.player--0`).classList.remove('player--winner');
+  document.querySelector(`.player--1`).classList.remove('player--winner');
+
+  document.querySelector(`.player--0`).classList.add('player--active');
+};
+
+gameStart();
 
 //Function to switch players
 const playerSwitch = function () {
@@ -86,37 +102,55 @@ const playerSwitch = function () {
 
 //Rolling dice functionality
 btnRoll.addEventListener('click', function () {
-  //1. Generate a random number (dice roll)
-  const dice = Math.trunc(Math.random() * 6) + 1;
-  //2. Display the dice image according to the number outcome
-  diceEl.classList.remove('hidden');
-  diceEl.src = `dice-${dice}.png`;
-  //3. Check if number 1 was outcome; if TRUE, switch to the other player
-  if (dice !== 1) {
-    //Add the value of dice to the current score
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
-  } else {
-    playerSwitch();
+  if (playing) {
+    //1. Generate a random number (dice roll)
+    const dice = Math.trunc(Math.random() * 6) + 1;
+    //2. Display the dice image according to the number outcome
+    diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
+    //3. Check if number 1 was outcome; if TRUE, switch to the other player
+    if (dice !== 1) {
+      //Add the value of dice to the current score
+      currentScore += dice;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      playerSwitch();
+    }
   }
 });
 
 //Holding score functionality
 btnHold.addEventListener('click', function () {
-  // 1. add current score to the active player's global score
-  scores[activePlayer] += currentScore;
-  document.getElementById(`score--${activePlayer}`).textContent =
-    scores[activePlayer];
-  // 2. check if the active player's score is >= 100
-  if (scores[activePlayer] < 100) {
-    playerSwitch();
-  } else {
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add('player--winner');
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove('player--active');
+  if (playing) {
+    // 1. add current score to the active player's global score
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
+    // 2. check if the active player's score is >= 100
+    if (scores[activePlayer] < 20) {
+      playerSwitch();
+    } else {
+      playing = false;
+      diceEl.classList.add('hidden');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    }
   }
+});
+
+//Resetting the game
+////Suggestion #1 - reload the document
+/*
+btnNew.addEventListener('click', function () {
+  location.reload();
+});
+*/
+////Suggestion #2 -
+btnNew.addEventListener('click', function () {
+  gameStart();
 });
