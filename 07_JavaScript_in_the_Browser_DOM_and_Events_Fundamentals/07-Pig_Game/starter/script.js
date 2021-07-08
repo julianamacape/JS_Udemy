@@ -53,11 +53,8 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
-//Initial conditions
-let currentScore;
-let activePlayer;
-let playing;
-let scores;
+//Initial conditions variables
+let currentScore, activePlayer, playing, scores;
 
 const gameStart = function () {
   score0El.textContent = 0;
@@ -73,10 +70,10 @@ const gameStart = function () {
   activePlayer = 0;
   playing = true;
 
-  document.querySelector(`.player--0`).classList.remove('player--winner');
-  document.querySelector(`.player--1`).classList.remove('player--winner');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
 
-  document.querySelector(`.player--0`).classList.add('player--active');
+  player0El.classList.add('player--active');
 };
 
 gameStart();
@@ -127,8 +124,8 @@ btnHold.addEventListener('click', function () {
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-    // 2. check if the active player's score is >= 100
-    if (scores[activePlayer] < 20) {
+    // 2. check if the active player's score is < 100
+    if (scores[activePlayer] < 100) {
       playerSwitch();
     } else {
       playing = false;
@@ -151,6 +148,4 @@ btnNew.addEventListener('click', function () {
 });
 */
 ////Suggestion #2 -
-btnNew.addEventListener('click', function () {
-  gameStart();
-});
+btnNew.addEventListener('click', gameStart);
