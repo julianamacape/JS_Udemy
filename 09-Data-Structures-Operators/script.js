@@ -23,4 +23,5 @@ const restaurant = {
   },
 };
 
-console.log(restaurant.openingHours.thu.open);
+const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7];
+console.log(a, b, others);
