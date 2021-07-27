@@ -23,5 +23,14 @@ const restaurant = {
   },
 };
 
-const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7];
-console.log(a, b, others);
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+
+  console.log(sum);
+};
+
+const arr = [23, 5, 7];
+add(...arr);
