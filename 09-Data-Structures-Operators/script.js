@@ -1,36 +1,45 @@
 "use strict";
 
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+//Data Structures, Modern Operators and Strings
+//Coding challenge #1 - Betting app
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
+const game = {
+  team1: "Bayern Munich",
+  team2: "Borrussia Dortmund",
+  players: [
+    [
+      "Neuer",
+      "Pavard",
+      "Martinez",
+      "Alaba",
+      "Davies",
+      "Kimmich",
+      "Goretzka",
+      "Coman",
+      "Muller",
+      "Gnarby",
+      "Lewandowski",
+    ],
+    [
+      "Burki",
+      "Schulz",
+      "Hummels",
+      "Akanji",
+      "Hakimi",
+      "Weigl",
+      "Witsel",
+      "Hazard",
+      "Brandt",
+      "Sancho",
+      "Gotze",
+    ],
+  ],
+  score: "4:0",
+  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+  date: "Nov 9th, 2037",
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
   },
 };
-
-const add = function (...numbers) {
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-
-  console.log(sum);
-};
-
-const arr = [23, 5, 7];
-add(...arr);
