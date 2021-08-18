@@ -27,3 +27,23 @@ const restaurant = {
     },
   },
 };
+
+const quiz = new Map([
+  ['pergunta', 'O que é o que é...?'],
+  [1, 'resposta1'],
+  [2, 'resposta2'],
+  [3, 'resposta3'],
+  ['correct', 1],
+  [true, 'correct'],
+  [false, 'incorrect'],
+]);
+
+console.log(quiz.get('pergunta'));
+for (const [key, value] of quiz) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+const answer = Number(prompt(`What's the correct answer?`));
+console.log(quiz.get(quiz.get('correct') === answer));
