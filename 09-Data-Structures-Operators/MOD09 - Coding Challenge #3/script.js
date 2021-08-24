@@ -5,11 +5,11 @@
 
 const gameEvents = new Map([
   [17, "⚽️ GOAL"],
-  [36, "🔁 Substitution"],
-  [47, "⚽️ GOAL"],
-  [61, "🔁 Substitution"],
-  [64, "🔶 Yellow card"],
-  [69, "🔴 Red card"],
+  [26, "🔁 Substitution"],
+  [29, "⚽️ GOAL"],
+  [31, "🔁 Substitution"],
+  [44, "🔶 Yellow card"],
+  [59, "🔴 Red card"],
   [70, "🔁 Substitution"],
   [72, "🔁 Substitution"],
   [76, "⚽️ GOAL"],
@@ -34,7 +34,7 @@ console.log(gameEvents);
 const gameEventsTimes = [...gameEvents.keys()];
 const totalEvents = gameEventsTimes.length;
 const lastEventTime = gameEventsTimes[totalEvents - 1];
-const average = lastEventTime / totalEvents;
+const average = (lastEventTime / totalEvents).toFixed(2);
 console.log(`An event happened, on average, every ${average} minutes`);
 
 //Step4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
