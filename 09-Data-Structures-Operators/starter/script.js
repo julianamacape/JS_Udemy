@@ -28,5 +28,5 @@ const restaurant = {
   },
 };
 
-const airline = 'GOL Linhas Aéreas';
-console.log(airline.indexOf('L'));
+const plane = 'A320neo';
+console.log(plane.includes('A350'));
