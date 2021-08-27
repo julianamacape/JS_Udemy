@@ -28,5 +28,6 @@ const restaurant = {
   },
 };
 
-const plane = 'A320neo';
-console.log(plane.includes('A350'));
+const number = 33;
+const str = number.toString();
+console.log(str, typeof str);
