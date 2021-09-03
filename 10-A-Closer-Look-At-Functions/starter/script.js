@@ -1,24 +1,13 @@
 'use strict';
 
-const book = {
-  booker(flightNum, name) {
-    console.log(`${name} booked a seat on flight ${flightNum}`);
+const myObject = {
+  name: 'Ju',
+  age: 34,
+  greet: function () {
+    console.log(this);
   },
 };
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  // book: function() {}
-  book,
-};
+myObject.location = 'Quebec city';
 
-lufthansa.book.booker(239, 'Jonas Schmedtmann');
-//lufthansa.book(635, 'John Smith');
-
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
+myObject.greet();
