@@ -1,25 +1,9 @@
 'use strict';
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  // book: function() {}
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
+const addTax = function (rate) {
+  return function (value) {
+    return value + value * (rate / 100);
+  };
 };
 
-// With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-
-  this.planes++;
-  console.log(this.planes);
-};
-lufthansa.buyPlane();
-
-document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+const addFee = addTax(12);
+console.log(addFee(100));
