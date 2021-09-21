@@ -20,5 +20,25 @@ const poll = {
     typeof answer === "number" &&
       answer < this.options.length &&
       this.answers[answer]++;
+
+    this.displayResults();
+    this.displayResults("string");
+  },
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers);
+    } else if (type === "string") {
+      console.log(`Poll results are: ${this.answers.join(", ")}`);
+    }
   },
 };
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+//TEST DATA #1 [5, 2, 3]
+poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+
+//TEST DATA #2 [1,5,3,9,6,1]
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
