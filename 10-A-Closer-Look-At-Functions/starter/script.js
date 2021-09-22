@@ -1,9 +1,17 @@
 'use strict';
-const addTax = function (rate) {
-  return function (value) {
-    return value + value * (rate / 100);
+const secureBooking = function () {
+  let paxCount = 0;
+
+  return function () {
+    paxCount++;
+    console.log(`${paxCount} passengers so far.`);
   };
 };
 
-const addFee = addTax(12);
-console.log(addFee(100));
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+booker();
+booker();
