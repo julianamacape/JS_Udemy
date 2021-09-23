@@ -1,17 +1,14 @@
 'use strict';
-const secureBooking = function () {
-  let paxCount = 0;
 
-  return function () {
-    paxCount++;
-    console.log(`${paxCount} passengers so far.`);
+let f;
+
+const g = function () {
+  const a = 23;
+
+  f = function () {
+    console.log(a * 2);
   };
 };
 
-const booker = secureBooking();
-
-booker();
-booker();
-booker();
-booker();
-booker();
+g();
+f();
