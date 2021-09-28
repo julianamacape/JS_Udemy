@@ -75,6 +75,9 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-const arr = [1, 2, 3, 4, 5];
-console.log(arr.splice(2));
-console.log(arr);
+const arr = ['a', 'b', 'c', 'd', 'e'];
+
+const arr2 = [1, 2, 3, 4, 5, 6];
+const myArray = arr.concat(arr2);
+
+console.log(myArray.join('~'));
