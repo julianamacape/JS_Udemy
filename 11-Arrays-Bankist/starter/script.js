@@ -87,7 +87,24 @@ const currencies = new Map([
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
+*/
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToBrl = 6.39;
+/*
+const movementsBRL = movements.map(function (mov) {
+  return mov * eurToBrl;
+});
+console.log(movements);
+console.log(movementsBRL);
 */
 /////////////////////////////////////////////////
+const movementsDescriptions = movements.map((mov, i, arr) => {
+  if (mov > 0) {
+    return `Movement ${i + 1}: you deposited ${mov}.00`;
+  } else {
+    return `Movement ${i + 1}: you withdrew ${Math.abs(mov)}.00`;
+  }
+});
+
+console.log(movementsDescriptions);
