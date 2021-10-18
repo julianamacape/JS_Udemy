@@ -77,7 +77,20 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
+displayMovements(account2.movements);
+
+const createUsername = function (allAccounts) {
+  allAccounts.forEach(function (account) {
+    account.username = account.owner
+      .tolowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsername(accounts);
+console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -89,15 +102,15 @@ const currencies = new Map([
 ]);
 */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToBrl = 6.39;
+//const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//const eurToBrl = 6.39;
 /*
 const movementsBRL = movements.map(function (mov) {
   return mov * eurToBrl;
 });
 console.log(movements);
 console.log(movementsBRL);
-*/
+
 /////////////////////////////////////////////////
 const movementsDescriptions = movements.map((mov, i, arr) => {
   if (mov > 0) {
@@ -108,3 +121,4 @@ const movementsDescriptions = movements.map((mov, i, arr) => {
 });
 
 console.log(movementsDescriptions);
+*/
