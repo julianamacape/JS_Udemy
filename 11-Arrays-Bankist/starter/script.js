@@ -82,15 +82,15 @@ displayMovements(account2.movements);
 const createUsername = function (allAccounts) {
   allAccounts.forEach(function (account) {
     account.username = account.owner
-      .tolowerCase()
+      .toLowerCase()
       .split(' ')
       .map(name => name[0])
       .join('');
   });
 };
 
-createUsername(accounts);
-console.log(accounts);
+//createUsername(accounts);
+//console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -122,3 +122,14 @@ const movementsDescriptions = movements.map((mov, i, arr) => {
 
 console.log(movementsDescriptions);
 */
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const onlyWithdrawals = movements.filter(function (movement) {
+  return movement < 0;
+});
+
+//Using an arrow function
+//const onlyWithdrawals = movements.filter(movement => movement < 0); "That's it!"
+
+console.log(onlyWithdrawals);
