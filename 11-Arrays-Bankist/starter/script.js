@@ -79,6 +79,13 @@ const displayMovements = function (movements) {
 
 displayMovements(account2.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} £`;
+};
+
+calcDisplayBalance(account2.movements);
+
 const createUsername = function (allAccounts) {
   allAccounts.forEach(function (account) {
     account.username = account.owner
@@ -89,7 +96,7 @@ const createUsername = function (allAccounts) {
   });
 };
 
-//createUsername(accounts);
+createUsername(accounts);
 //console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -121,7 +128,7 @@ const movementsDescriptions = movements.map((mov, i, arr) => {
 });
 
 console.log(movementsDescriptions);
-*/
+
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -133,3 +140,4 @@ const onlyWithdrawals = movements.filter(function (movement) {
 //const onlyWithdrawals = movements.filter(movement => movement < 0); "That's it!"
 
 console.log(onlyWithdrawals);
+*/
