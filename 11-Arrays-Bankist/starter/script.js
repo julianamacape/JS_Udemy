@@ -117,6 +117,27 @@ const createUsername = function (allAccounts) {
 };
 
 createUsername(accounts);
+
+let currentAccount; //Vamos só deixar essa variável criada aqui inicialmente como "let" pq ao longo do código ela será usada outras vezes e seu valor alterado
+
+btnLogin.addEventListener('click', function (e) {
+  //Pq o "e" como parâmetro? Pq vamos precisar mexer com o "event" da função, que no caso é o de clicar
+  e.preventDefault(); //Fizemos isso pq todo button qd clicado dentro de um form tem por "padrão" atualizar a página, e não queremos isso
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+
+  console.log(currentAccount);
+
+  //Agora vamos cruzar o username inserido com o PIN inserido e ver se ambos dão "match" ou não pra poder ou não autorizar o LOGIN
+  //Outra coisa, perceba que utilizamos "optional chaining", pois se for inserido um username que não existe, o retorno é "undefined" e não um erro
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //Display UI and welcome message
+    //Display movements
+    //Display balance
+    //Display summary
+  }
+});
 //console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
