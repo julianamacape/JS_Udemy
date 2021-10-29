@@ -133,9 +133,18 @@ btnLogin.addEventListener('click', function (e) {
   //Outra coisa, perceba que utilizamos "optional chaining", pois se for inserido um username que não existe, o retorno é "undefined" e não um erro
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     //Display UI and welcome message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
     //Display movements
+    displayMovements(currentAccount.movements);
     //Display balance
+    calcDisplayBalance(currentAccount.movements);
     //Display summary
+    calcDisplaySummary(currentAccount.movements);
+    //Clear input fields (username and PIN)
+    inputLoginPin.value = inputLoginUsername.value = '';
   }
 });
 //console.log(accounts);
