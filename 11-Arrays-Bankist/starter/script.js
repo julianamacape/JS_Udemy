@@ -77,34 +77,34 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account2.movements);
+//displayMovements(account2.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} £`;
 };
 
-calcDisplayBalance(account2.movements);
+//calcDisplayBalance(account2.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (account) {
+  const incomes = account.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}£`;
 
-  const outcomes = movements
+  const outcomes = account.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}£`;
 
-  const interest = movements
+  const interest = account.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * account.interestRate) / 100)
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}£`;
 };
 
-calcDisplaySummary(account2.movements);
+//calcDisplaySummary(account2.movements);
 
 const createUsername = function (allAccounts) {
   allAccounts.forEach(function (account) {
@@ -127,8 +127,6 @@ btnLogin.addEventListener('click', function (e) {
     acc => acc.username === inputLoginUsername.value
   );
 
-  console.log(currentAccount);
-
   //Agora vamos cruzar o username inserido com o PIN inserido e ver se ambos dão "match" ou não pra poder ou não autorizar o LOGIN
   //Outra coisa, perceba que utilizamos "optional chaining", pois se for inserido um username que não existe, o retorno é "undefined" e não um erro
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
@@ -142,10 +140,20 @@ btnLogin.addEventListener('click', function (e) {
     //Display balance
     calcDisplayBalance(currentAccount.movements);
     //Display summary
-    calcDisplaySummary(currentAccount.movements);
+    calcDisplaySummary(currentAccount);
     //Clear input fields (username and PIN)
     inputLoginPin.value = inputLoginUsername.value = '';
+    inputLoginPin.blur();
   }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const recipientAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  console.log(amount, recipientAcc);
 });
 //console.log(accounts);
 /////////////////////////////////////////////////
