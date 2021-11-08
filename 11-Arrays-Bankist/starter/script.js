@@ -77,14 +77,10 @@ const displayMovements = function (movements) {
   });
 };
 
-//displayMovements(account2.movements);
-
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} £`;
+const calcDisplayBalance = function (account) {
+  account.balance = account.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${account.balance} £`;
 };
-
-//calcDisplayBalance(account2.movements);
 
 const calcDisplaySummary = function (account) {
   const incomes = account.movements
@@ -100,23 +96,23 @@ const calcDisplaySummary = function (account) {
   const interest = account.movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * account.interestRate) / 100)
+    .filter((int, i, arr) => {
+      return int >= 1;
+    })
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}£`;
 };
 
-//calcDisplaySummary(account2.movements);
-
-const createUsername = function (allAccounts) {
-  allAccounts.forEach(function (account) {
-    account.username = account.owner
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
       .toLowerCase()
       .split(' ')
       .map(name => name[0])
       .join('');
   });
 };
-
-createUsername(accounts);
+createUsernames(accounts);
 
 let currentAccount; //Vamos só deixar essa variável criada aqui inicialmente como "let" pq ao longo do código ela será usada outras vezes e seu valor alterado
 
@@ -124,8 +120,9 @@ btnLogin.addEventListener('click', function (e) {
   //Pq o "e" como parâmetro? Pq vamos precisar mexer com o "event" da função, que no caso é o de clicar
   e.preventDefault(); //Fizemos isso pq todo button qd clicado dentro de um form tem por "padrão" atualizar a página, e não queremos isso
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    account => account.username === inputLoginUsername.value
   );
+  console.log(currentAccount.username);
 
   //Agora vamos cruzar o username inserido com o PIN inserido e ver se ambos dão "match" ou não pra poder ou não autorizar o LOGIN
   //Outra coisa, perceba que utilizamos "optional chaining", pois se for inserido um username que não existe, o retorno é "undefined" e não um erro
@@ -138,7 +135,7 @@ btnLogin.addEventListener('click', function (e) {
     //Display movements
     displayMovements(currentAccount.movements);
     //Display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
     //Display summary
     calcDisplaySummary(currentAccount);
     //Clear input fields (username and PIN)
@@ -153,7 +150,13 @@ btnTransfer.addEventListener('click', function (e) {
   const recipientAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  console.log(amount, recipientAcc);
+  console.log('transfer valid, BITCH');
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    recipientAcc?.username !== currentAccount.username
+  ) {
+  }
 });
 //console.log(accounts);
 /////////////////////////////////////////////////
