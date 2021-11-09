@@ -114,6 +114,15 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
+const updateUI = function (account) {
+  //Display movements
+  displayMovements(account.movements);
+  //Display balance
+  calcDisplayBalance(account);
+  //Display summary
+  calcDisplaySummary(account);
+};
+
 let currentAccount; //Vamos só deixar essa variável criada aqui inicialmente como "let" pq ao longo do código ela será usada outras vezes e seu valor alterado
 
 btnLogin.addEventListener('click', function (e) {
@@ -132,12 +141,8 @@ btnLogin.addEventListener('click', function (e) {
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
-    //Display movements
-    displayMovements(currentAccount.movements);
-    //Display balance
-    calcDisplayBalance(currentAccount);
-    //Display summary
-    calcDisplaySummary(currentAccount);
+    //Display updated user interface
+    updateUI(currentAccount);
     //Clear input fields (username and PIN)
     inputLoginPin.value = inputLoginUsername.value = '';
     inputLoginPin.blur();
@@ -150,14 +155,30 @@ btnTransfer.addEventListener('click', function (e) {
   const recipientAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
-  console.log('transfer valid, BITCH');
+
   if (
     amount > 0 &&
     currentAccount.balance >= amount &&
-    recipientAcc?.username !== currentAccount.username
+    recipientAcc?.username !== currentAccount.username &&
+    recipientAcc
   ) {
+    currentAccount.movements.push(-amount);
+    recipientAcc.movements.push(amount);
+    //Display updated user interface
+    updateUI(currentAccount);
   }
+
+  inputTransferAmount.value = inputTransferTo.value = '';
 });
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+
+    accounts.splice(index,1);
+  }
+})
 //console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
