@@ -171,14 +171,36 @@ btnTransfer.addEventListener('click', function (e) {
   inputTransferAmount.value = inputTransferTo.value = '';
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const loanAmount = Number(inputLoanAmount.value);
+  if (
+    loanAmount > 0 &&
+    currentAccount.movements.some(mov => mov >= 0.1 * loanAmount)
+  ) {
+    currentAccount.movements.push(loanAmount);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.valeu = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
-  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
-    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
 
-    accounts.splice(index,1);
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+
+    accounts.splice(index, 1);
+
+    containerApp.style.opacity = 0;
   }
-})
+  inputClosePin.value = inputCloseUsername.value = '';
+});
 //console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
